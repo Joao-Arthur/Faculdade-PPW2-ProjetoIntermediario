@@ -3,13 +3,8 @@ import parser from 'node-html-parser';
 import fetch from 'node-fetch';
 const router = express.Router();
 
-router.get('/healthcheck', (req, res) => {
-    res.sendStatus(200);
-});
-
-router.get('/cursosgraduacao', (req, res) => {
+router.get('/', (req, res) => {
     const curso = req.query.curso?.toString();
-    if (!curso) return res.send([]);
 
     fetch('http://matriculas.unesc.net/graduacao')
         .then(resposta => resposta.text())
@@ -23,8 +18,10 @@ router.get('/cursosgraduacao', (req, res) => {
                     tipo: curso['_attrs']['data-type'],
                     timestamp
                 }))
-                .filter(({ nome }) =>
-                    nome.toLowerCase().includes(curso.toLowerCase())
+                .filter(
+                    ({ nome }) =>
+                        !curso ||
+                        nome.toLowerCase().includes(curso.toLowerCase())
                 );
 
             res.send(cursos);
