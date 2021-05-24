@@ -5,18 +5,18 @@ import healthcheck from './routes/healthcheck';
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+app.use('/healthcheck', healthcheck);
+app.use('/bandas', bandas);
+app.use('/cursos', cursos);
 app.use('/', (req, res) => {
     res.send({
         rotas: [
             { healthcheck: { queryParams: [] } },
-            { bandas: { queryParams: [] } },
+            { bandas: { queryParams: ['banda?: string'] } },
             { cursos: { queryParams: ['curso?: string'] } }
         ]
     });
 });
-app.use('/healthcheck', healthcheck);
-app.use('/bandas', bandas);
-app.use('/cursos', cursos);
 app.use((req, res) => {
     res.sendStatus(404);
 });

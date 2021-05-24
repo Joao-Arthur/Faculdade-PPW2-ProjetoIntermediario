@@ -9,20 +9,17 @@ router.get('/', (req, res) => {
     fetch('http://matriculas.unesc.net/graduacao')
         .then(resposta => resposta.text())
         .then(resposta => {
-            const divCursos = parser(resposta).querySelectorAll('.curso__item');
+            const DOMCursos = parser(resposta).querySelectorAll('.curso__item');
             const timestamp = Date.now();
 
-            const cursos = divCursos
-                .map(curso => ({
-                    nome: curso['_attrs']['data-title'],
-                    tipo: curso['_attrs']['data-type'],
-                    timestamp
-                }))
-                .filter(
-                    ({ nome }) =>
-                        !curso ||
-                        nome.toLowerCase().includes(curso.toLowerCase())
-                );
+            const cursos = DOMCursos.map(DOMCurso => ({
+                nome: DOMCurso['_attrs']['data-title'],
+                tipo: DOMCurso['_attrs']['data-type'],
+                timestamp
+            })).filter(
+                ({ nome }) =>
+                    !curso || nome.toLowerCase().includes(curso.toLowerCase())
+            );
 
             res.send(cursos);
         });
