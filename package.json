@@ -4,9 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm run serve",
+    "start": "npm run build-ts && npm run serve",
     "serve": "node dist/index.js",
-    "postinstall": "npm run build-ts",
     "build-ts": "tsc",
     "dev": "nodemon"
   },
