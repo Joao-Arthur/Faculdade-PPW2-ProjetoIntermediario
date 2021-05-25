@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run tsc && node dist/index.js",
-    "tsc": "tsc",
+    "tsc": "npx tsc",
     "dev": "nodemon"
   },
   "keywords": [],
