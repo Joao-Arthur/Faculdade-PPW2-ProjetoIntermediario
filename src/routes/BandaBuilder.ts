@@ -1,6 +1,6 @@
 export default class BandaBuilder {
     private nome?: string;
-    private posicaoTop100?: number;
+    private ranking?: number;
     private cidadeDeOrigem?: string;
     private regiaoDeOrigem?: string;
     private anoDeOrigem?: number;
@@ -13,8 +13,8 @@ export default class BandaBuilder {
         return this;
     }
 
-    setPosicaoTop100(posicaoTop100: number) {
-        this.posicaoTop100 = posicaoTop100;
+    setRanking(ranking: number) {
+        this.ranking = ranking;
         return this;
     }
 
@@ -48,7 +48,7 @@ export default class BandaBuilder {
     build() {
         return {
             nome: this.nome,
-            posicaoTop100: this.posicaoTop100,
+            ranking: this.ranking,
             cidadeDeOrigem: this.cidadeDeOrigem,
             regiaoDeOrigem: this.regiaoDeOrigem,
             anoDeOrigem: this.anoDeOrigem,

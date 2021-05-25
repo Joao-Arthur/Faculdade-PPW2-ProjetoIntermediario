@@ -6,14 +6,18 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use('/healthcheck', healthcheck);
-app.use('/bandas', bandas);
+app.use('/rankingbandasderock', bandas);
 app.use('/cursos', cursos);
 app.use('/', (req, res) => {
     res.send({
         rotas: [
             { healthcheck: { queryParams: [] } },
-            { bandas: { queryParams: ['banda?: string'] } },
-            { cursos: { queryParams: ['curso?: string'] } }
+            {
+                rankingbandasderock: {
+                    queryParams: ['ranking', 'cidade', 'regiao', 'ano']
+                }
+            },
+            { cursos: { queryParams: ['curso'] } }
         ]
     });
 });

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     const nome = req.query.nome?.toString();
-    const posicaoTop100 = Number(req.query.ranking?.toString());
+    const ranking = Number(req.query.ranking?.toString());
     const cidadeDeOrigem = req.query.cidade?.toString();
     const regiaoDeOrigem = req.query.regiao?.toString();
     const anoDeOrigem = Number(req.query.ano?.toString());
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
                         DOMBanda.querySelector('.slide-title-text').text.split(
                             '. '
                         )[1];
-                    const posicaoTop100 = 100 - i;
+                    const ranking = 100 - i;
                     //por conta de um bug no split do node é necessário tratar o ": " depois do split
                     const [
                         origem,
@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
 
                     return new BandaBuilder()
                         .setNome(nome)
-                        .setPosicaoTop100(posicaoTop100)
+                        .setRanking(ranking)
                         .setOrigem(origem)
                         .setDiscosVendidosNosEUA(discosVendidosNosEUA)
                         .setAlbumMaisPopular(albumMaisPopular)
@@ -55,10 +55,7 @@ router.get('/', (req, res) => {
                         !nome ||
                         banda.nome?.toLowerCase() === nome.toLowerCase()
                 )
-                .filter(
-                    banda =>
-                        !posicaoTop100 || banda.posicaoTop100 === posicaoTop100
-                )
+                .filter(banda => !ranking || banda.ranking === ranking)
                 .filter(
                     banda =>
                         !cidadeDeOrigem ||
