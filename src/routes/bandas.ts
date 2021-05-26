@@ -1,7 +1,7 @@
 import express from 'express';
 import parser from 'node-html-parser';
 import fetch from 'node-fetch';
-import BandaBuilder from './bandaBuilder';
+import BandaBuilder from './BandaBuilder';
 const router = express.Router();
 
 router.get('/', (req, res) => {
