@@ -9,20 +9,31 @@ app.use('/healthcheck', healthcheck);
 app.use('/rankingbandasderock', bandas);
 app.use('/cursos', cursos);
 app.use('/', (req, res) => {
+    const url = req.protocol + '://' + req.get('host');
     res.send({
-        rotas: [
-            { healthcheck: { queryParams: [] } },
-            {
-                rankingbandasderock: {
-                    queryParams: ['ranking', 'cidade', 'regiao', 'ano']
-                }
+        rotas: {
+            healthcheck: {
+                queryParams: [],
+                url: `${url}/healthcheck`
             },
-            { cursos: { queryParams: ['curso'] } }
-        ]
+            rankingbandasderock: {
+                queryParams: ['ranking', 'cidade', 'regiao', 'ano'],
+                url: `${url}/rankingbandasderock`
+            },
+            cursos: {
+                queryParams: ['curso'],
+                url: `${url}/cursos`
+            }
+        },
+        api: {
+            versao: '1.0',
+            url: 'https://github.com/Joao-Arthur/Projeto_PPW2'
+        },
+        autor: {
+            nome: 'João Arthur',
+            url: 'https://github.com/Joao-Arthur/'
+        }
     });
-});
-app.use((req, res) => {
-    res.sendStatus(404);
 });
 
 app.listen(PORT, () => {
