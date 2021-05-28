@@ -54,7 +54,8 @@ export default class BandaBuilder {
             anoDeOrigem: this.anoDeOrigem,
             discosVendidosNosEUA: this.discosVendidosNosEUA,
             albumMaisPopular: this.albumMaisPopular,
-            visualizacoesAnuaisNaWikipedia: this.visualizacoesAnuaisNaWikipedia
+            visualizacoesAnuaisNaWikipedia: this.visualizacoesAnuaisNaWikipedia,
+            timestamp: Date.now()
         };
     }
 }
