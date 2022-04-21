@@ -7,6 +7,7 @@ Web API de Scraping (raspagem de dados).
 Trabalho intermediário da disciplina de programação para web 2 do curso de ciências da computação em 2021, desenvolvido em _Node JS_ e _TS_, utilizando a plataforma _Heroku_ para hospedagem em nuvem.
 
 Link do projeto no Heroku: https://projeto-ppw.herokuapp.com (já removido)
+
 Nenhuma nova alteração será feita no projeto. Ele serve apenas como **fonte de consulta** e como **arquivo pessoal**.
 
 ## Documentação da API
